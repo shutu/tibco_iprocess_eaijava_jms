@@ -11,25 +11,25 @@ public class ServiceResponse extends AbstractMessage {
 	/** 返回结果(0:不通过，1:通过) */
 	private String returnResult;
 
-	private String extValue1;
+	private String retValue1;
 
-	private String extValue2;
+	private String retValue2;
 
-	private String extValue3;
+	private String retValue3;
 
-	private String extValue4;
+	private String retValue4;
 
-	private String extValue5;
+	private String retValue5;
 
-	private String extValue6;
+	private String retValue6;
 
-	private String extValue7;
+	private String retValue7;
 
-	private String extValue8;
+	private String retValue8;
 
-	private String extValue9;
+	private String retValue9;
 
-	private String extValue10;
+	private String retValue10;
 
 	/*-------------------------------------*/
 	public String getFormatMessageString() {
@@ -37,16 +37,16 @@ public class ServiceResponse extends AbstractMessage {
 		addFormatField(buffer, returnCode);
 		addFormatField(buffer, returnMsg);
 		addFormatField(buffer, returnResult);
-		addFormatField(buffer, extValue1);
-		addFormatField(buffer, extValue2);
-		addFormatField(buffer, extValue3);
-		addFormatField(buffer, extValue4);
-		addFormatField(buffer, extValue5);
-		addFormatField(buffer, extValue6);
-		addFormatField(buffer, extValue7);
-		addFormatField(buffer, extValue8);
-		addFormatField(buffer, extValue9);
-		addFormatField(buffer, extValue10);
+		addFormatField(buffer, retValue1);
+		addFormatField(buffer, retValue2);
+		addFormatField(buffer, retValue3);
+		addFormatField(buffer, retValue4);
+		addFormatField(buffer, retValue5);
+		addFormatField(buffer, retValue6);
+		addFormatField(buffer, retValue7);
+		addFormatField(buffer, retValue8);
+		addFormatField(buffer, retValue9);
+		addFormatField(buffer, retValue10);
 		return buffer.toString();
 	}
 
@@ -62,38 +62,39 @@ public class ServiceResponse extends AbstractMessage {
 			returnResult = arr[2];
 		}
 		if (arr.length > 3) {
-			extValue1 = arr[3];
+			retValue1 = arr[3];
 		}
 		if (arr.length > 4) {
-			extValue2 = arr[4];
+			retValue2 = arr[4];
 		}
 		if (arr.length > 5) {
-			extValue3 = arr[5];
+			retValue3 = arr[5];
 		}
 		if (arr.length > 6) {
-			extValue4 = arr[6];
+			retValue4 = arr[6];
 		}
 		if (arr.length > 7) {
-			extValue5 = arr[7];
+			retValue5 = arr[7];
 		}
 		if (arr.length > 8) {
-			extValue6 = arr[8];
+			retValue6 = arr[8];
 		}
 		if (arr.length > 9) {
-			extValue7 = arr[9];
+			retValue7 = arr[9];
 		}
 		if (arr.length > 10) {
-			extValue8 = arr[10];
+			retValue8 = arr[10];
 		}
 		if (arr.length > 11) {
-			extValue9 = arr[11];
+			retValue9 = arr[11];
 		}
 		if (arr.length > 12) {
-			extValue10 = arr[12];
+			retValue10 = arr[12];
 		}
 	}
 
 	/*-------------------------------------*/
+
 	public String getReturnCode() {
 		return returnCode;
 	}
@@ -118,84 +119,84 @@ public class ServiceResponse extends AbstractMessage {
 		this.returnResult = returnResult;
 	}
 
-	public String getExtValue1() {
-		return extValue1;
+	public String getRetValue1() {
+		return retValue1;
 	}
 
-	public void setExtValue1(String extValue1) {
-		this.extValue1 = extValue1;
+	public void setRetValue1(String retValue1) {
+		this.retValue1 = retValue1;
 	}
 
-	public String getExtValue2() {
-		return extValue2;
+	public String getRetValue2() {
+		return retValue2;
 	}
 
-	public void setExtValue2(String extValue2) {
-		this.extValue2 = extValue2;
+	public void setRetValue2(String retValue2) {
+		this.retValue2 = retValue2;
 	}
 
-	public String getExtValue3() {
-		return extValue3;
+	public String getRetValue3() {
+		return retValue3;
 	}
 
-	public void setExtValue3(String extValue3) {
-		this.extValue3 = extValue3;
+	public void setRetValue3(String retValue3) {
+		this.retValue3 = retValue3;
 	}
 
-	public String getExtValue4() {
-		return extValue4;
+	public String getRetValue4() {
+		return retValue4;
 	}
 
-	public void setExtValue4(String extValue4) {
-		this.extValue4 = extValue4;
+	public void setRetValue4(String retValue4) {
+		this.retValue4 = retValue4;
 	}
 
-	public String getExtValue5() {
-		return extValue5;
+	public String getRetValue5() {
+		return retValue5;
 	}
 
-	public void setExtValue5(String extValue5) {
-		this.extValue5 = extValue5;
+	public void setRetValue5(String retValue5) {
+		this.retValue5 = retValue5;
 	}
 
-	public String getExtValue6() {
-		return extValue6;
+	public String getRetValue6() {
+		return retValue6;
 	}
 
-	public void setExtValue6(String extValue6) {
-		this.extValue6 = extValue6;
+	public void setRetValue6(String retValue6) {
+		this.retValue6 = retValue6;
 	}
 
-	public String getExtValue7() {
-		return extValue7;
+	public String getRetValue7() {
+		return retValue7;
 	}
 
-	public void setExtValue7(String extValue7) {
-		this.extValue7 = extValue7;
+	public void setRetValue7(String retValue7) {
+		this.retValue7 = retValue7;
 	}
 
-	public String getExtValue8() {
-		return extValue8;
+	public String getRetValue8() {
+		return retValue8;
 	}
 
-	public void setExtValue8(String extValue8) {
-		this.extValue8 = extValue8;
+	public void setRetValue8(String retValue8) {
+		this.retValue8 = retValue8;
 	}
 
-	public String getExtValue9() {
-		return extValue9;
+	public String getRetValue9() {
+		return retValue9;
 	}
 
-	public void setExtValue9(String extValue9) {
-		this.extValue9 = extValue9;
+	public void setRetValue9(String retValue9) {
+		this.retValue9 = retValue9;
 	}
 
-	public String getExtValue10() {
-		return extValue10;
+	public String getRetValue10() {
+		return retValue10;
 	}
 
-	public void setExtValue10(String extValue10) {
-		this.extValue10 = extValue10;
+	public void setRetValue10(String retValue10) {
+		this.retValue10 = retValue10;
 	}
 
 }
