@@ -59,49 +59,46 @@ public class ServiceRequest extends AbstractMessage {
 			requestType = arr[0];
 		}
 		if (arr.length > 1) {
-			requestType = arr[1];
+			processCode = arr[1];
 		}
 		if (arr.length > 2) {
-			processCode = arr[2];
+			needUpdateStep = arr[2];
 		}
 		if (arr.length > 3) {
-			needUpdateStep = arr[3];
+			appNum = arr[3];
 		}
 		if (arr.length > 4) {
-			appNum = arr[4];
+			prodCode = arr[4];
 		}
 		if (arr.length > 5) {
-			prodCode = arr[5];
+			extValue1 = arr[5];
 		}
 		if (arr.length > 6) {
-			extValue1 = arr[6];
+			extValue2 = arr[6];
 		}
 		if (arr.length > 7) {
-			extValue2 = arr[7];
+			extValue3 = arr[7];
 		}
 		if (arr.length > 8) {
-			extValue3 = arr[8];
+			extValue4 = arr[8];
 		}
 		if (arr.length > 9) {
-			extValue4 = arr[9];
+			extValue5 = arr[9];
 		}
 		if (arr.length > 10) {
-			extValue5 = arr[10];
+			extValue6 = arr[10];
 		}
 		if (arr.length > 11) {
-			extValue6 = arr[11];
+			extValue7 = arr[11];
 		}
 		if (arr.length > 12) {
-			extValue7 = arr[12];
+			extValue8 = arr[12];
 		}
 		if (arr.length > 13) {
-			extValue8 = arr[13];
+			extValue9 = arr[13];
 		}
 		if (arr.length > 14) {
-			extValue9 = arr[14];
-		}
-		if (arr.length > 15) {
-			extValue10 = arr[15];
+			extValue10 = arr[14];
 		}
 	}
 
