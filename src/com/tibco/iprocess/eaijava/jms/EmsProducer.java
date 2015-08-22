@@ -37,7 +37,7 @@ import com.tibco.tibjms.TibjmsTopicConnectionFactory;
  */
 public class EmsProducer {
 
-    private static final int TIMEOUT_DEADLINE = 60000; // 8 seconds
+    private static final int TIMEOUT_DEADLINE = 300 * 1000; // 300 seconds
 
     private String serverUrl;
 
@@ -78,7 +78,8 @@ public class EmsProducer {
      * @param password
      * @param destinationName
      */
-    public EmsProducer(String serverUrl, String userName, String password, String destinationName) {
+    public EmsProducer(String serverUrl, String userName, String password,
+            String destinationName) {
         super();
         this.serverUrl = serverUrl;
         this.userName = userName;
@@ -95,18 +96,22 @@ public class EmsProducer {
      * @param ackMode
      * @param isTopic
      */
-    public EmsProducer(String serverUrl, String userName, String password, String destinationName, boolean transacted, int ackMode, boolean isTopic) {
+    public EmsProducer(String serverUrl, String userName, String password,
+            String destinationName, boolean transacted, int ackMode,
+            boolean isTopic) {
         this(serverUrl, userName, password, destinationName);
         this.transacted = transacted;
         this.ackMode = ackMode;
         this.isTopic = isTopic;
     }
 
-    public synchronized String send(String content) throws JMSException, InterruptedException {
+    public synchronized String send(String content) throws JMSException,
+            InterruptedException {
         return send(null, content, TIMEOUT_DEADLINE);
     }
 
-    public synchronized String send(String correlationId, String content, int timeout) throws JMSException, InterruptedException {
+    public synchronized String send(String correlationId, String content,
+            int timeout) throws JMSException, InterruptedException {
         initalSession();
 
         // Now create the actual message you want to send
@@ -125,7 +130,9 @@ public class EmsProducer {
         return responseText;
     }
 
-    public synchronized Message sendBytes(String correlationId, byte[] bytes, Map<String, Object> properties, int timeout) throws JMSException, InterruptedException {
+    public synchronized Message sendBytes(String correlationId, byte[] bytes,
+            Map<String, Object> properties, int timeout) throws JMSException,
+            InterruptedException {
         initalSession();
         // Now create the actual message you want to send
         BytesMessage bytesMessage = session.createBytesMessage();
@@ -142,16 +149,23 @@ public class EmsProducer {
         return sendMessage(correlationId, bytesMessage, timeout);
     }
 
-    private synchronized Message sendMessage(String correlationId, Message message, int timeout) throws JMSException, InterruptedException {
+    private synchronized Message sendMessage(String correlationId,
+            Message message, int timeout) throws JMSException,
+            InterruptedException {
         try {
-            // Set the reply to field to the temp queue you created above, this is the queue the server
+            // Set the reply to field to the temp queue you created above, this
+            // is the queue the server
             // will respond to
             message.setJMSReplyTo(tempDest);
 
-            // Set a correlation ID so when you get a response you know which sent message the response is for
-            // If there is never more than one outstanding message to the server then the
-            // same correlation ID can be used for all the messages...if there is more than one outstanding
-            // message to the server you would presumably want to associate the correlation ID with this
+            // Set a correlation ID so when you get a response you know which
+            // sent message the response is for
+            // If there is never more than one outstanding message to the server
+            // then the
+            // same correlation ID can be used for all the messages...if there
+            // is more than one outstanding
+            // message to the server you would presumably want to associate the
+            // correlation ID with this
             // message somehow...a Map works good
             if (correlationId == null) {
                 correlationId = createRandomString();
@@ -181,22 +195,30 @@ public class EmsProducer {
 
     private void initalSession() throws JMSException {
         if (isTopic) {
-            connection = new TibjmsTopicConnectionFactory(serverUrl).createTopicConnection(userName, password);
-            session = ((TopicConnection) connection).createTopicSession(transacted, ackMode);
+            connection = new TibjmsTopicConnectionFactory(serverUrl)
+                    .createTopicConnection(userName, password);
+            session = ((TopicConnection) connection).createTopicSession(
+                    transacted, ackMode);
         } else {
-            connection = new TibjmsQueueConnectionFactory(serverUrl).createQueueConnection(userName, password);
-            session = ((QueueConnection) connection).createQueueSession(transacted, ackMode);
+            connection = new TibjmsQueueConnectionFactory(serverUrl)
+                    .createQueueConnection(userName, password);
+            session = ((QueueConnection) connection).createQueueSession(
+                    transacted, ackMode);
         }
         connection.start();
         Destination adminQueue = session.createQueue(destinationName);
 
-        // Setup a message producer to send message to the queue the server is consuming from
+        // Setup a message producer to send message to the queue the server is
+        // consuming from
         producer = session.createProducer(adminQueue);
         producer.setDeliveryMode(DeliveryMode.PERSISTENT);
 
-        // Create a temporary queue that this client will listen for responses on then create a consumer
-        // that consumes message from this temporary queue...for a real application a client should reuse
-        // the same temp queue for each message to the server...one temp queue per client
+        // Create a temporary queue that this client will listen for responses
+        // on then create a consumer
+        // that consumes message from this temporary queue...for a real
+        // application a client should reuse
+        // the same temp queue for each message to the server...one temp queue
+        // per client
         tempDest = session.createTemporaryQueue();
         MessageConsumer responseConsumer = session.createConsumer(tempDest);
 
@@ -215,7 +237,9 @@ public class EmsProducer {
         long currentTimeMillis = System.currentTimeMillis();
         Random random = new Random(currentTimeMillis);
         long randomLong = random.nextLong();
-        return hostName + Thread.currentThread().getId() + Long.toHexString(currentTimeMillis) + Long.toHexString(randomLong);
+        return hostName + Thread.currentThread().getId()
+                + Long.toHexString(currentTimeMillis)
+                + Long.toHexString(randomLong);
     }
 
 }
