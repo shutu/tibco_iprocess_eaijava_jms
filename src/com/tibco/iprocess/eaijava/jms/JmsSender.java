@@ -8,8 +8,7 @@ import java.util.Properties;
 
 import javax.jms.JMSException;
 
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
+import org.apache.log4j.Logger;
 
 import com.tibco.iprocess.eaijava.jms.domain.ServiceRequest;
 import com.tibco.iprocess.eaijava.jms.domain.ServiceResponse;
@@ -20,7 +19,7 @@ import com.tibco.iprocess.eaijava.jms.domain.ServiceResponse;
  */
 public class JmsSender {
 
-  private static final Log logger = LogFactory.getLog(JmsSender.class);
+  private static final Logger logger = Logger.getLogger(JmsSender.class);
 
   private static String serverUrl = "tcp://ipejmsserver1:7222,tcp://ipejmsserver2:7222";
 
