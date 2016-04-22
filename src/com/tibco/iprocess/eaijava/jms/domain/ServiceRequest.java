@@ -35,21 +35,21 @@ public class ServiceRequest extends AbstractMessage {
 	/*-------------------------------------*/
 	public String getFormatMessageString() {
 		StringBuffer buffer = new StringBuffer();
-		addFormatField(buffer, requestType);
-		addFormatField(buffer, processCode);
-		addFormatField(buffer, needUpdateStep);
-		addFormatField(buffer, appNum);
-		addFormatField(buffer, prodCode);
-		addFormatField(buffer, extValue1);
-		addFormatField(buffer, extValue2);
-		addFormatField(buffer, extValue3);
-		addFormatField(buffer, extValue4);
-		addFormatField(buffer, extValue5);
-		addFormatField(buffer, extValue6);
-		addFormatField(buffer, extValue7);
-		addFormatField(buffer, extValue8);
-		addFormatField(buffer, extValue9);
-		addFormatField(buffer, extValue10);
+		addFormatField(buffer, requestType, true);
+		addFormatField(buffer, processCode, false);
+		addFormatField(buffer, needUpdateStep, false);
+		addFormatField(buffer, appNum, false);
+		addFormatField(buffer, prodCode, false);
+		addFormatField(buffer, extValue1, false);
+		addFormatField(buffer, extValue2, false);
+		addFormatField(buffer, extValue3, false);
+		addFormatField(buffer, extValue4, false);
+		addFormatField(buffer, extValue5, false);
+		addFormatField(buffer, extValue6, false);
+		addFormatField(buffer, extValue7, false);
+		addFormatField(buffer, extValue8, false);
+		addFormatField(buffer, extValue9, false);
+		addFormatField(buffer, extValue10, false);
 		return buffer.toString();
 	}
 

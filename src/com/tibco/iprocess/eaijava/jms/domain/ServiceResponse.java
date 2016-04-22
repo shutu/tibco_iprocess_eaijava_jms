@@ -37,19 +37,19 @@ public class ServiceResponse extends AbstractMessage {
   /*-------------------------------------*/
   public String getFormatMessageString() {
     StringBuffer buffer = new StringBuffer();
-    addFormatField(buffer, returnCode);
-    addFormatField(buffer, returnMsg);
-    addFormatField(buffer, returnResult);
-    addFormatField(buffer, retValue1);
-    addFormatField(buffer, retValue2);
-    addFormatField(buffer, retValue3);
-    addFormatField(buffer, retValue4);
-    addFormatField(buffer, retValue5);
-    addFormatField(buffer, retValue6);
-    addFormatField(buffer, retValue7);
-    addFormatField(buffer, retValue8);
-    addFormatField(buffer, retValue9);
-    addFormatField(buffer, retValue10);
+    addFormatField(buffer, returnCode, true);
+    addFormatField(buffer, returnMsg, false);
+    addFormatField(buffer, returnResult, false);
+    addFormatField(buffer, retValue1, false);
+    addFormatField(buffer, retValue2, false);
+    addFormatField(buffer, retValue3, false);
+    addFormatField(buffer, retValue4, false);
+    addFormatField(buffer, retValue5, false);
+    addFormatField(buffer, retValue6, false);
+    addFormatField(buffer, retValue7, false);
+    addFormatField(buffer, retValue8, false);
+    addFormatField(buffer, retValue9, false);
+    addFormatField(buffer, retValue10, false);
     return buffer.toString();
   }
 
