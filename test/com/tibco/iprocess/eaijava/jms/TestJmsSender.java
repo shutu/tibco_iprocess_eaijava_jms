@@ -14,7 +14,7 @@ public class TestJmsSender {
 		request.setAppNum("BO0000001");
 		request.setExtValue1("test");
 
-		ServiceResponse response = JmsSender.sendJms("bpm.iprocess.service", request);
+		ServiceResponse response = JmsSender.sendJms("test.iprocess.service", request);
 
 		System.out.println(response.getFormatMessageString());
 
