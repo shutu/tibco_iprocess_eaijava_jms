@@ -169,6 +169,9 @@ public class EmsProducer {
       }
       message.setJMSCorrelationID(correlationId);
       long timeToLive = timeout / 5;
+      if (timeToLive < 100) {
+        timeToLive = 100;
+      }
       producer.send(message, DeliveryMode.PERSISTENT, DEFAULT_PRIORITY, timeToLive);
 
       MessageConsumer responseConsumer = session.createConsumer(tempDest);
